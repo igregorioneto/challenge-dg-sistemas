@@ -1,0 +1,88 @@
+<p-dialog 
+  [header]="titleModal" 
+  [(visible)]="displayModal" 
+  [style]="{width: '50vw'}" 
+  [baseZIndex]="10000">
+  
+  <form [formGroup]="productForm">
+    <span>
+      <input 
+        type="text" 
+        class="p-inputtext-lg" 
+        placeholder="Digite o nome do produto..."  
+        pInputText 
+        formControlName="name"
+      />
+    </span>
+
+    <span>
+      <p-inputNumber 
+        inputId="currency-br" 
+        class="p-inputtext-lg" 
+        mode="currency" 
+        currency="USD" 
+        locale="en-US"
+        formControlName="price"
+      >
+      </p-inputNumber>
+    </span>
+  </form>
+
+  <ng-template pTemplate="footer">
+      <p-button icon="pi pi-check" (click)="recordInformation()" [label]="buttonRegisterModal"></p-button>
+      <p-button icon="pi pi-times" (click)="clearForm()" label="Cancelar" styleClass="p-button-danger"></p-button>
+  </ng-template>
+</p-dialog>
+
+<div class="menu">
+  <p-menubar [model]="items">
+    <ng-template pTemplate="end">
+      <p-avatar
+          icon="pi pi-user"
+          styleClass="p-mr-2"
+          size="large"
+          shape="circle"
+        ></p-avatar>
+    </ng-template>
+  </p-menubar>
+</div>
+
+<div class="card">
+  <p-table [value]="products" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" 
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]">
+      <ng-template pTemplate="header">
+          <tr>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Opções</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product>
+          <tr>
+              <td>{{product.name}}</td>
+              <td>{{product.price}}</td>
+              <td>
+                <p-button 
+                  class="button-margin"
+                  icon="pi pi-pencil" 
+                  (click)="editProduct(product)"
+                ></p-button>
+
+                <p-button 
+                  icon="pi pi-trash" 
+                  (click)="deletingProduct(product)" 
+                  styleClass="p-button-danger"
+                ></p-button>
+              </td>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="paginatorleft">
+          <p-button 
+            (click)="registerProduct()" 
+            type="button" 
+            icon="pi pi-plus" 
+            styleClass="p-button-text"
+          ></p-button>
+      </ng-template>
+  </p-table>
+</div>

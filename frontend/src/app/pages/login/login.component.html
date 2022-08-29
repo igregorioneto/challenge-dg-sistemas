@@ -1,0 +1,23 @@
+<div class="login">
+  <div class="box-center">
+    <div class="card">
+      <p-avatar
+              icon="pi pi-user"
+              styleClass="p-mr-2"
+              size="large"
+              shape="circle"
+            ></p-avatar>
+    
+      <h1>Olá, <span>visitante</span>!</h1>
+    </div>
+    
+    <div class="authorized">
+      <p-button 
+        (click)="authService.GoogleAuth()"
+        label="Sign in with Google" 
+        icon="pi pi-google" 
+        styleClass="p-button" 
+      ></p-button>
+    </div>
+  </div>
+</div>

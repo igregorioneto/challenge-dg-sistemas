@@ -1,0 +1,47 @@
+.login {
+  height: 100vh;
+  background-color: rgb(236, 236, 236);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .card {
+    width: 350px;
+    height: 300px;
+
+    background-color: rgb(255, 255, 255);
+    box-shadow: 2px 5px #a7a1a1;
+
+    border-radius: 8px;
+
+    margin-bottom: 15px;
+
+    padding: 30px;
+
+    h1 {
+      text-align: center;
+      span {
+        color: rgb(10, 132, 214);
+      }
+    }
+  }
+}
+
+:host ::ng-deep {
+  .card {
+    .p-element {
+      .p-avatar {
+        width: 150px;
+        height: 150px;
+        position: relative;
+        left: 70px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+  .authorized {
+    .p-element button {
+      width: 350px;
+    }
+  }
+}
